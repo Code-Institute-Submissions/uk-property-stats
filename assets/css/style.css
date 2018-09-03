@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+}
+
+/*Navbar - mostly covered on Bootstrap*/
+
+/*Main Content*/
+
+/*Opening header and paragraph*/
+
+.main-content-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+}
+
+.opening-intro {
+    margin: 10px 0;
+}
+
+.intro-heading {
+    font-size: 30px;
+}
+
+.intro-paragraph {
+    
+}
+
+/*Footer areas*/
+
+/*Footer top areas for about section and contact form*/
+
+.footer-area {
+    width: 100%;
+    background-color: #343A40;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-top {
+    width: 90%;
+    color: #ffffff;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-left,
+.footer-right {
+    width: 100%;
+}
+
+.footer-top div div h2 {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.footer-top div div p {
+    font-weight: 300;
+}
+    
+.contact-section {
+}
+
+.footer-input-text-box {
+    width: 100%;
+    background-color: #1B1E21;
+    border: 0px /*solid #727F8C*/;
+    height: 40px;
+    padding: 0 10px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.btn {
+    width: 100%;
+    border: 1.5px solid #727F8C;
+    font-size: 20px;
+    height: 50px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+/*Social media links*/
+
+.footer-bottom {
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.social-links {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.social {
+    margin: 0 10px;
+}
+
+.social-links li a {
+    text-decoration: none;
+}
+
+.social-links li a i {
+    font-size: 30px;
+    display: flex;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    color: #343A40;
+}
+
+.social-links li a i:hover {
+    transition-property: color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    color: #1B1E21;
+}
+
+/*Larger screen sizes*/
+
+@media (min-width: 768px) {
+    
+    .footer-top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+    
+    .footer-left {
+        width: 45%;
+    }
+    
+    .footer-right {
+        width: 45%;
+    }
+    
+    .btn {
+        max-width: 350px;
+    }
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1224px) {
+    
+}
+
