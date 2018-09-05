@@ -6,6 +6,8 @@ function initMap() {
             lng: -3.943989
         }
     });
+    
+    //Setting the variables and locations for the different cities
                 
     var inverness = {lat: 57.479619, lng: -4.224938};
     var belfast = {lat: 54.600836, lng: -5.932751};
@@ -23,12 +25,26 @@ function initMap() {
     var hull = {lat: 53.745660, lng: -0.335650};
     var norwich = {lat: 52.631332, lng: 1.297582};
     var northampton = {lat: 52.240603, lng: -0.903741};
-                
+      
+    //Inverness  
+    
     var markerInverness = new google.maps.Marker({
         position: inverness,
         map: map,
-        title: 'Inverness'
+        title: 'Inverness',
+        content: "Inverness"
     });
+    
+    var invernessInfoWindow = {
+        content: "Inverness"
+    };
+    
+    var invernessInfo = new google.maps.invernessInfoWindow(invernessInfoWindow);
+    google.maps.event.addListener(markerInverness, 'click', function(e) {
+        invernessInfoWindow.open(map, markerInverness);
+    });
+    
+    //Belfast  
                 
     var markerBelfast = new google.maps.Marker({
         position: belfast,
