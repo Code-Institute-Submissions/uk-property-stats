@@ -39,7 +39,7 @@
 }
 
 .main-image-shade {
-    background-color: rgb(30, 30, 30, 0.7);
+    background-color: rgb(30, 30, 30, 0.6);
     height: 300px;
     display: flex;
     justify-content: center;
@@ -60,7 +60,9 @@
 .site-info {
     width: 90%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 #map {
@@ -111,7 +113,7 @@
 .footer-input-text-box {
     width: 100%;
     background-color: #1B1E21;
-    border: 0px /*solid #727F8C*/;
+    border: 0px;
     height: 40px;
     padding: 0 10px;
     color: #ffffff;
@@ -175,6 +177,13 @@
 
 @media (min-width: 768px) {
     
+    .map-intro {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
     .footer-top {
         display: flex;
         flex-direction: row;
@@ -197,12 +206,20 @@
 
 @media (min-width: 992px) {
     
+    .map-intro {
+        width: 80%;
+    }
+    
     .opening-intro {
         width: 80%;
     }
+    
+    .map-intro {
+        
+    }
 
     #map {
-        max-width: 1000px;
+        max-width: 950px;
     }
     
     .footer-top {
