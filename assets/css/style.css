@@ -39,7 +39,7 @@
 }
 
 .main-image-shade {
-    background-color: rgb(30, 30, 30, 0.8);
+    background-color: rgb(30, 30, 30, 0.7);
     height: 300px;
     display: flex;
     justify-content: center;
@@ -204,12 +204,20 @@
     #map {
         max-width: 1000px;
     }
+    
+    .footer-top {
+        width: 80%;
+    }
 
 }
 
 @media (min-width: 1224px) {
     
     .opening-intro {
+        width: 70%;
+    }
+    
+    .footer-top {
         width: 70%;
     }
     

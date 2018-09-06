@@ -1,146 +1,53 @@
-var locations = [
-    ['inverness', 57.4796, 151.274856, 'address 1'],
-    ['belfast', 33.923036, 151.259052, 'address 2'],
-    ['glasgow', 34.028249, 151.157507, 'address 3'],
-    ['london', 33.80010128657071, 151.28747820854187, 'address 4'],
-    ['edinburgh', 33.950198, 151.259302, 'address 5']
+var cities = [
+    ['Inverness', 57.479619, -4.224938, 'Average Price: £187,049'],
+    ['Belfast', 54.600836, -5.932751, 'Average Price: £155,789'],
+    ['Glasgow', 55.865522, -4.252412, 'Average Price: £172,585'],
+    ['London', 51.506791, -0.129040, 'Average Price: £633,930'],
+    ['Edinburgh', 55.952654, -3.188794, 'Average Price: £288,238'],
+    ['Southampton', 50.908917, -1.403317, 'Average Price: £294,828'],
+    ['Plymouth', 50.375636, -4.146690, 'Average Price: £211,001'],
+    ['Bristol', 51.454462, -2.588046, 'Average Price: £326,055'],
+    ['Swansea', 51.621268, -3.943260, 'Average Price: £174,706'],
+    ['Aberystwyth', 52.415238, -4.084461, 'Average Price: £213,927'],
+    ['Manchester', 53.480205, -2.242433, 'Average Price: £187,913'],
+    ['Birmingham', 52.485861, -1.889658, 'Average Price: £193,029'],
+    ['Newcastle', 54.978782, -1.616143, 'Average Price: £198,463'],
+    ['Hull', 53.745660, -0.335650, 'Average Price: £139,144'],
+    ['Norwich', 52.631332, 1.297582, 'Average Price: £257,657'],
+    ['Northampton', 52.240603, -0.903741, 'Average Price: £260,809']
 ];
 
 function initMap() {
-    var map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 5.3,
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 5.3, 
         center: {
-            lat: 54.336316,
+            lat: 54.336316, 
             lng: -3.943989
         }
     });
     
-    //Setting the variables and locations for the different cities
-                
-    var inverness = {lat: 57.479619, lng: -4.224938};
-    var belfast = {lat: 54.600836, lng: -5.932751};
-    var glasgow = {lat: 55.865522, lng: -4.252412};
-    var london = {lat: 51.506791, lng: -0.129040};
-    var edinburgh = {lat: 55.952654, lng: -3.188794};
-    var southampton = {lat: 50.908917, lng: -1.403317};
-    var plymouth = {lat: 50.375636, lng: -4.146690};
-    var bristol = {lat: 51.454462, lng: -2.588046};
-    var swansea = {lat: 51.621268, lng: -3.943260};
-    var aberystwyth = {lat: 52.415238, lng: -4.084461};
-    var manchester = {lat: 53.480205, lng: -2.242433};
-    var birmingham = {lat: 52.485861, lng: -1.889658};
-    var newcastle = {lat: 54.978782, lng: -1.616143};
-    var hull = {lat: 53.745660, lng: -0.335650};
-    var norwich = {lat: 52.631332, lng: 1.297582};
-    var northampton = {lat: 52.240603, lng: -0.903741};
-      
-    //Inverness  
-    
-    var markerInverness = new google.maps.Marker({
-        position: inverness,
-        map: map,
-        title: 'Inverness',
-        content: "Inverness"
-    });
-    
-    /*var invernessInfoWindow = {
-        content: "Inverness"
-    };
-    
-    var invernessInfo = new google.maps.invernessInfoWindow(invernessInfoWindow);
-    google.maps.event.addListener(markerInverness, 'click', function(e) {
-        invernessInfoWindow.open(map, markerInverness);
-    });*/
-    
-    //Belfast  
-                
-    var markerBelfast = new google.maps.Marker({
-        position: belfast,
-        map: map,
-        title: 'Belfast'
-    });
-                
-    var markerGlasgow = new google.maps.Marker({
-        position: glasgow,
-        map: map,
-        title: 'Glasgow'
-    });
-                
-    var markerLondon = new google.maps.Marker({
-        position: london,
-        map: map,
-        title: 'London'
-    });
-                
-    var markerEdinburgh = new google.maps.Marker({
-        position: edinburgh,
-        map: map,
-        title: 'Edinburgh'
-    });
-                
-    var markerSouthampton = new google.maps.Marker({
-        position: southampton,
-        map: map,
-        title: 'Southampton'
-    });
-                
-    var markerPlymouth = new google.maps.Marker({
-        position: plymouth,
-        map: map,
-        title: 'Plymouth'
-    });
-                
-    var markerBristol = new google.maps.Marker({
-        position: bristol,
-        map: map,
-        title: 'Bristol'
-    });
-                
-    var markerSwansea = new google.maps.Marker({
-        position: swansea,
-        map: map,
-        title: 'Swansea'
-    });
-                
-    var markerAberystwyth = new google.maps.Marker({
-        position: aberystwyth,
-        map: map,
-        title: 'Aberystwyth'
-    });
-                
-    var markerManchester = new google.maps.Marker({
-        position: manchester,
-        map: map,
-        title: 'Manchester'
-    });
-                
-    var markerBirmingham = new google.maps.Marker({
-        position: birmingham,
-        map: map,
-        title: 'Birmingham'
-    });
-                
-    var markerNewcastle = new google.maps.Marker({
-        position: newcastle,
-        map: map,
-        title: 'Newcastle'
-    });
-                
-    var markerHull = new google.maps.Marker({
-        position: hull,
-        map: map,
-        title: 'Hull'
-    });
-                
-    var markerNorwich = new google.maps.Marker({
-        position: norwich,
-        map: map,
-        title: 'Norwich'
-    });
-                
-    var markerNorthampton = new google.maps.Marker({
-        position: northampton,
-        map: map,
-        title: 'Northampton'
-    });
+    var newMarker, i
+        for (i = 0; i < cities.length; i++) {
+            var cityName = cities[i][0]
+            var latitude = cities[i][1]
+            var longitude = cities[i][2]
+            var info = cities[i][3]
+            
+            setLatLong = new google.maps.LatLng(latitude, longitude);
+            
+            var marker = new google.maps.Marker({
+                map: map, title: cityName, position: setLatLong 
+            });
+            
+            var content = `<h5>${cityName}</h5><p>${info}<p>`;
+                            
+            var infoWindow = new google.maps.InfoWindow()
+
+            google.maps.event.addListener(marker,'click', (function(marker,content,infoWindow){ 
+                return function() {
+                infoWindow.setContent(content);
+                infoWindow.open(map,marker);
+            };
+        })(marker,content,infoWindow));  
+    }
 }
