@@ -196,6 +196,10 @@
 }
 
 @media (min-width: 992px) {
+    
+    .opening-intro {
+        width: 80%;
+    }
 
     #map {
         max-width: 1000px;
@@ -204,6 +208,10 @@
 }
 
 @media (min-width: 1224px) {
+    
+    .opening-intro {
+        width: 70%;
+    }
     
 }
 

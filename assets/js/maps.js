@@ -1,3 +1,11 @@
+var locations = [
+    ['inverness', 57.4796, 151.274856, 'address 1'],
+    ['belfast', 33.923036, 151.259052, 'address 2'],
+    ['glasgow', 34.028249, 151.157507, 'address 3'],
+    ['london', 33.80010128657071, 151.28747820854187, 'address 4'],
+    ['edinburgh', 33.950198, 151.259302, 'address 5']
+];
+
 function initMap() {
     var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 5.3,
@@ -35,14 +43,14 @@ function initMap() {
         content: "Inverness"
     });
     
-    var invernessInfoWindow = {
+    /*var invernessInfoWindow = {
         content: "Inverness"
     };
     
     var invernessInfo = new google.maps.invernessInfoWindow(invernessInfoWindow);
     google.maps.event.addListener(markerInverness, 'click', function(e) {
         invernessInfoWindow.open(map, markerInverness);
-    });
+    });*/
     
     //Belfast  
                 
