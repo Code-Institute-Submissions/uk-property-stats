@@ -16,9 +16,11 @@
               emailjs.init("user_nVgsbi1Gg5ntFv9PDjPuz");
            })();
         </script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.min.css" type="text/css" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/3.0.6/dc.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.min.js"></script>
         
         <title>UK Property Stats</title>
         
@@ -62,7 +64,14 @@
                         <p class="map-intro-paragraph">Click on the cities on the map to see the average house prices in these areas.</p>
                     </div>
                     <div id="map"></div>
-                    <div class="city-bar-chart"></div>
+                    <div class="map-intro">
+                        <h2 class="map-heading">Number of Home sales per City</h2>
+                        <p class="map-intro-paragraph">The bar chart below show the number of houses, of all types, that were sold in the last year in different parts of the country.</p>
+                    </div>
+                    <div id="graph-selector"></div>
+                    <div id="average-house-price-bar-chart"></div>
+                    <div id="house-sales-bar-chart"></div>
+                    <div id="house-type-pie-chart"></div>
                     
                     <script>
                         var cityPriceData = [
@@ -129,13 +138,100 @@
                             {"City Name": "Northampton", "House Type": "Detached", "Price": 369371, "Number of Sales": 1296},
                             {"City Name": "Northampton", "House Type": "Semi-Detached", "Price": 231771, "Number of Sales": 1162},
                             {"City Name": "Northampton", "House Type": "Terraced", "Price": 196907, "Number of Sales": 1212},
-                            {"City Name": "Northampton", "House Type": "Flats", "Price": 133656, "Number of Sales": 395}
-                        ]
+                            {"City Name": "Northampton", "House Type": "Flats", "Price": 133656, "Number of Sales": 395},
+                        ];
                         
                         var ndx = crossfilter(cityPriceData);
                         
-                        var cityName = ndx.dimension(dc.pluck("City Name"));
-                        var totalHousePricePerCity = cityName.group().reduceSum(dc.pluck("Detached Prices", "Semi-Detached Prices", "Terraced Prices", "Flats Prices"));
+                        var cityName = ndx.dimension(dc.pluck('City Name'));
+                        
+                        //var averageHousePricePerCity = cityName.group().reduce(adder, remover, initialiser);
+                        
+                        var averageHousePricePerCity = cityName.group().reduce(
+                            
+                            function (p, v) {
+                                p.count++;
+                                p.total += v.price;
+                                p.average = p.total / p.count;
+                                return p;
+                            },
+                            
+                            function (p, v) {
+                                p.count--;
+                                if (p.count == 0) {
+                                    p.total = 0;
+                                    p.average = 0;
+                                } else {
+                                    p.total -= v.price;
+                                    p.average = p.total / p.count;
+                                }
+                                return p;
+                            },
+                            
+                            function() {
+                                return { count: 0, total: 0, average: 0};
+                            }
+                        );
+                        
+                        console.log(averageHousePricePerCity.all());
+                            
+                        var averagePriceChart = dc.barChart('#average-house-price-bar-chart');
+                        
+                        averagePriceChart
+                            .width(900)
+                            .height(400)
+                            .margins({top: 10, right: 50, bottom: 30, left: 50})
+                            .dimension(cityName)
+                            .group(averageHousePricePerCity)
+                            .x(d3.scale.ordinal())
+                            .xUnits(dc.units.ordinal)
+                            .xAxisLabel('City Name')
+                            .yAxisLabel('Average House Price in Area')
+                            .yAxis().ticks(4);
+
+                        var totalHouseSalesPerCity = cityName.group().reduceSum(dc.pluck('Number of Sales'));
+                        
+                        dc.barChart("#house-sales-bar-chart")
+                            .width(900)
+                            .height(400)
+                            .margins({top: 10, right: 50, bottom: 30, left: 50})
+                            .dimension(cityName)
+                            .group(totalHouseSalesPerCity)
+                            .transitionDuration(500)
+                            .x(d3.scale.ordinal())
+                            .xUnits(dc.units.ordinal)
+                            .xAxisLabel('City Name')
+                            .yAxisLabel('Number of homes sold')
+                            .yAxis().ticks(4);
+                        
+                        var cityName = ndx.dimension(dc.pluck('City Name'));
+                        var totalHouseSalesPerCity = cityName.group().reduceSum(dc.pluck('Number of Sales'));
+                        
+                        dc.barChart("#house-sales-bar-chart")
+                            .width(900)
+                            .height(400)
+                            .margins({top: 10, right: 50, bottom: 30, left: 50})
+                            .dimension(cityName)
+                            .group(totalHouseSalesPerCity)
+                            .transitionDuration(500)
+                            .x(d3.scale.ordinal())
+                            .xUnits(dc.units.ordinal)
+                            .xAxisLabel('City Name')
+                            .yAxisLabel('Number of homes sold')
+                            .yAxis().ticks(4);
+       
+                        var houseType = ndx.dimension(dc.pluck('House Type'));
+                        var totalHouseSalesPerType = houseType.group().reduceSum(dc.pluck('Number of Sales'));
+                            
+                        dc.pieChart("#house-type-pie-chart")
+                            .height(400)
+                            .radius(150)
+                            .transitionDuration(1500)
+                            .dimension(houseType)
+                            .group(totalHouseSalesPerType);
+                            
+                        dc.renderAll();
+                            
                     </script>
                     
                 </div>
