@@ -72,6 +72,7 @@
                     <div id="average-house-price-bar-chart"></div>
                     <div id="house-sales-bar-chart"></div>
                     <div id="house-type-pie-chart"></div>
+                    <div id="house-type-price-bar-chart"></div>
                     
                     <script>
                         var cityPriceData = [
@@ -141,6 +142,8 @@
                             {"City Name": "Northampton", "House Type": "Flats", "Price": 133656, "Number of Sales": 395},
                         ];
                         
+                    
+                        
                         var ndx = crossfilter(cityPriceData);
                         
                         var cityName = ndx.dimension(dc.pluck('City Name'));
@@ -202,6 +205,7 @@
                             .xUnits(dc.units.ordinal)
                             .xAxisLabel('City Name')
                             .yAxisLabel('Number of homes sold')
+                            .elasticY(true)
                             .yAxis().ticks(4);
                         
                         var cityName = ndx.dimension(dc.pluck('City Name'));
@@ -230,6 +234,21 @@
                             .dimension(houseType)
                             .group(totalHouseSalesPerType);
                             
+                        var houseTypePrice = ndx.dimension(dc.pluck('Price'))
+                        
+                        dc.barChart("#house-type-price-bar-chart")
+                            .height(400)
+                            .width(400)
+                            .margins({top: 10, right: 50, bottom: 30, left: 50})
+                            .dimension(houseType)
+                            .group(houseTypePrice)
+                            .transitionDuration(1500)
+                            .x(d3.scale.ordinal())
+                            .xUnits(dc.units.ordinal)
+                            .xAxisLabel('House Type')
+                            .yAxisLabel('Price')
+                            .yAxis().ticks(4);
+                                                
                         dc.renderAll();
                             
                     </script>
