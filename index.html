@@ -36,223 +36,61 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Map</a>
+                        <a class="nav-link" href="#map">Map</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Stats</a>
+                        <a class="nav-link" href="#charts">Stats</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
         </nav>
         
         <section class="main-content-container">
-            <div class="main-content">
-                <div class="opening-image">
-                    <div class="main-image-shade">
+            <div class="opening-image">
+                <div class="main-image-shade">
+                    <div class="opening-text-container">
                         <div class="opening-intro">
                             <h1 class="intro-heading">UK Property Stats</h1>
                             <p class="intro-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, hic, doloribus. Laboriosam, recusandae enim aperiam velit, a veritatis molestiae placeat sed perspiciatis magnam nisi, est incidunt rem quas reprehenderit, veniam distinctio. Quaerat repudiandae earum voluptate minus, dolore, cumque quisquam ullam!</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        
+        <section class="main-content-charts">
+            <div class="info-container">
                 <div class="site-info">
-                    <div class="map-intro">
-                        <h2 class="map-heading">Map</h2>
-                        <p class="map-intro-paragraph">Click on the cities on the map to see the average house prices in these areas.</p>
+                    <div class="section-intro">
+                        <h2 class="section-heading">Map</h2>
+                        <p class="section-paragraph">Click on the cities on the map to see the average house prices in these areas.</p>
                     </div>
                     <div id="map"></div>
-                    <div class="map-intro">
-                        <h2 class="map-heading">Number of Home sales per City</h2>
-                        <p class="map-intro-paragraph">The bar chart below show the number of houses, of all types, that were sold in the last year in different parts of the country.</p>
+                    <a id=charts></a>
+                    <div class="section-intro">
+                        <h2 class="section-heading">Number of Home sales per City</h2>
+                        <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aliquid perspiciatis fugit voluptate tempora. Labore dolores, consequuntur. Perferendis, nihil cupiditate!</p>
                     </div>
-                    <div id="graph-selector"></div>
+                        
+                    <div class="chart-intro">
+                        <h3 class="chart-header">Average House Price Per Area</h3>
+                        <p class="chart-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ad aperiam recusandae, asperiores debitis fuga. Facilis quos, velit modi eius.</p>
+                    </div>
                     <div id="average-house-price-bar-chart"></div>
+                        
+                    <div class="chart-intro">
+                        <h3 class="chart-header">Total Number of Homes sold per Area</h3>
+                        <p class="chart-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ad aperiam recusandae, asperiores debitis fuga. Facilis quos, velit modi eius.</p>
+                    </div>
                     <div id="house-sales-bar-chart"></div>
-                    <div id="house-type-pie-chart"></div>
-                    <div id="house-type-price-bar-chart"></div>
-                    
-                    <script>
-                        var cityPriceData = [
-                            {"City Name": "Inverness", "House Type": "Detached", "Price": 253587, "Number of Sales": 178},
-                            {"City Name": "Inverness", "House Type": "Semi-Detached", "Price": 171851, "Number of Sales": 122},
-                            {"City Name": "Inverness", "House Type": "Terraced", "Price": 135922, "Number of Sales": 70},
-                            {"City Name": "Inverness", "House Type": "Flats", "Price": 126847, "Number of Sales": 72},
-                            {"City Name": "Belfast", "House Type": "Detached", "Price": 381987, "Number of Sales": 283},
-                            {"City Name": "Belfast", "House Type": "Semi-Detached", "Price": 182474, "Number of Sales": 522},
-                            {"City Name": "Belfast", "House Type": "Terraced", "Price": 109178, "Number of Sales": 378},
-                            {"City Name": "Belfast", "House Type": "Flats", "Price": 137457, "Number of Sales": 334},
-                            {"City Name": "Glasgow", "House Type": "Detached", "Price": 300716, "Number of Sales": 997},
-                            {"City Name": "Glasgow", "House Type": "Semi-Detached", "Price": 185356, "Number of Sales": 1192},
-                            {"City Name": "Glasgow", "House Type": "Terraced", "Price": 151361, "Number of Sales": 1215},
-                            {"City Name": "Glasgow", "House Type": "Flats", "Price": 132944, "Number of Sales": 5303},
-                            {"City Name": "London", "House Type": "Detached", "Price": 1060037, "Number of Sales": 2931},
-                            {"City Name": "London", "House Type": "Semi-Detached", "Price": 705310, "Number of Sales": 8038},
-                            {"City Name": "London", "House Type": "Terraced", "Price": 717616, "Number of Sales": 14248},
-                            {"City Name": "London", "House Type": "Flats", "Price": 508553, "Number of Sales": 24345},
-                            {"City Name": "Edinburgh", "House Type": "Detached", "Price": 479979, "Number of Sales": 335}, 
-                            {"City Name": "Edinburgh", "House Type": "Semi-Detached", "Price": 303057, "Number of Sales": 384},
-                            {"City Name": "Edinburgh", "House Type": "Terraced", "Price": 315995, "Number of Sales": 501},
-                            {"City Name": "Edinburgh", "House Type": "Flats", "Price": 215450, "Number of Sales": 4341},
-                            {"City Name": "Southampton", "House Type": "Detached", "Price": 425796, "Number of Sales": 1368},
-                            {"City Name": "Southampton", "House Type": "Semi-Detached", "Price": 280394, "Number of Sales": 1414},
-                            {"City Name": "Southampton", "House Type": "Terraced", "Price": 237416, "Number of Sales": 1243},
-                            {"City Name": "Southampton", "House Type": "Flats", "Price": 167725, "Number of Sales": 1152},
-                            {"City Name": "Plymouth", "House Type": "Detached", "Price": 335871, "Number of Sales": 512}, 
-                            {"City Name": "Plymouth", "House Type": "Semi-Detached", "Price": 205329 , "Number of Sales": 1029},
-                            {"City Name": "Plymouth", "House Type": "Terraced", "Price": 175629, "Number of Sales": 1505},
-                            {"City Name": "Plymouth", "House Type": "Flats", "Price": 133465, "Number of Sales": 520},
-                            {"City Name": "Bristol", "House Type": "Detached", "Price": 456547, "Number of Sales": 1715}, 
-                            {"City Name": "Bristol", "House Type": "Semi-Detached", "Price": 320648, "Number of Sales": 2924},
-                            {"City Name": "Bristol", "House Type": "Terraced", "Price": 288140, "Number of Sales": 3725},
-                            {"City Name": "Bristol", "House Type": "Flats", "Price": 240919, "Number of Sales": 2332},
-                            {"City Name": "Swansea", "House Type": "Detached", "Price": 250589, "Number of Sales": 827}, 
-                            {"City Name": "Swansea", "House Type": "Semi-Detached", "Price": 147364, "Number of Sales": 1110},
-                            {"City Name": "Swansea", "House Type": "Terraced", "Price": 118830, "Number of Sales": 904},
-                            {"City Name": "Swansea", "House Type": "Flats", "Price": 132887, "Number of Sales": 231},
-                            {"City Name": "Aberystwyth", "House Type": "Detached", "Price": 234991, "Number of Sales": 90}, 
-                            {"City Name": "Aberystwyth", "House Type": "Semi-Detached", "Price": 183794, "Number of Sales": 57},
-                            {"City Name": "Aberystwyth", "House Type": "Terraced", "Price": 159363, "Number of Sales": 44},
-                            {"City Name": "Aberystwyth", "House Type": "Flats", "Price": 134070, "Number of Sales": 32},
-                            {"City Name": "Manchester", "House Type": "Detached", "Price": 290457, "Number of Sales": 1270},
-                            {"City Name": "Manchester", "House Type": "Semi-Detached", "Price": 199203, "Number of Sales": 4415},
-                            {"City Name": "Manchester", "House Type": "Terraced", "Price": 149443, "Number of Sales": 3665},
-                            {"City Name": "Manchester", "House Type": "Flats", "Price": 166995, "Number of Sales": 1882},
-                            {"City Name": "Birmingham", "House Type": "Detached", "Price": 373271, "Number of Sales": 955}, 
-                            {"City Name": "Birmingham", "House Type": "Semi-Detached", "Price": 202126, "Number of Sales": 3598},
-                            {"City Name": "Birmingham", "House Type": "Terraced", "Price": 160068, "Number of Sales": 3593},
-                            {"City Name": "Birmingham", "House Type": "Flats", "Price": 141473, "Number of Sales": 1672},
-                            {"City Name": "Newcastle", "House Type": "Detached", "Price": 332689, "Number of Sales": 837}, 
-                            {"City Name": "Newcastle", "House Type": "Semi-Detached", "Price": 183742, "Number of Sales": 1459},
-                            {"City Name": "Newcastle", "House Type": "Terraced", "Price": 168529, "Number of Sales": 1262},
-                            {"City Name": "Newcastle", "House Type": "Flats", "Price": 128749, "Number of Sales": 763},
-                            {"City Name": "Hull", "House Type": "Detached", "Price": 239533, "Number of Sales": 604}, 
-                            {"City Name": "Hull", "House Type": "Semi-Detached", "Price": 142057, "Number of Sales": 1196},
-                            {"City Name": "Hull", "House Type": "Terraced", "Price": 105363, "Number of Sales": 1614},
-                            {"City Name": "Hull", "House Type": "Flats", "Price": 85240, "Number of Sales": 178},
-                            {"City Name": "Norwich", "House Type": "Detached", "Price": 334873, "Number of Sales": 1977}, 
-                            {"City Name": "Norwich", "House Type": "Semi-Detached", "Price": 233295, "Number of Sales": 1398},
-                            {"City Name": "Norwich", "House Type": "Terraced", "Price": 210674, "Number of Sales": 1248},
-                            {"City Name": "Norwich", "House Type": "Flats", "Price": 148387, "Number of Sales": 550},
-                            {"City Name": "Northampton", "House Type": "Detached", "Price": 369371, "Number of Sales": 1296},
-                            {"City Name": "Northampton", "House Type": "Semi-Detached", "Price": 231771, "Number of Sales": 1162},
-                            {"City Name": "Northampton", "House Type": "Terraced", "Price": 196907, "Number of Sales": 1212},
-                            {"City Name": "Northampton", "House Type": "Flats", "Price": 133656, "Number of Sales": 395},
-                        ];
                         
-                    
-                        
-                        var ndx = crossfilter(cityPriceData);
-                        
-                        var cityName = ndx.dimension(dc.pluck('City Name'));
-                        
-                        //var averageHousePricePerCity = cityName.group().reduce(adder, remover, initialiser);
-                        
-                        var averageHousePricePerCity = cityName.group().reduce(
-                            
-                            function (p, v) {
-                                p.count++;
-                                p.total += v.price;
-                                p.average = p.total / p.count;
-                                return p;
-                            },
-                            
-                            function (p, v) {
-                                p.count--;
-                                if (p.count == 0) {
-                                    p.total = 0;
-                                    p.average = 0;
-                                } else {
-                                    p.total -= v.price;
-                                    p.average = p.total / p.count;
-                                }
-                                return p;
-                            },
-                            
-                            function() {
-                                return { count: 0, total: 0, average: 0};
-                            }
-                        );
-                        
-                        console.log(averageHousePricePerCity.all());
-                            
-                        var averagePriceChart = dc.barChart('#average-house-price-bar-chart');
-                        
-                        averagePriceChart
-                            .width(900)
-                            .height(400)
-                            .margins({top: 10, right: 50, bottom: 30, left: 50})
-                            .dimension(cityName)
-                            .group(averageHousePricePerCity)
-                            .x(d3.scale.ordinal())
-                            .xUnits(dc.units.ordinal)
-                            .xAxisLabel('City Name')
-                            .yAxisLabel('Average House Price in Area')
-                            .yAxis().ticks(4);
-
-                        var totalHouseSalesPerCity = cityName.group().reduceSum(dc.pluck('Number of Sales'));
-                        
-                        dc.barChart("#house-sales-bar-chart")
-                            .width(900)
-                            .height(400)
-                            .margins({top: 10, right: 50, bottom: 30, left: 50})
-                            .dimension(cityName)
-                            .group(totalHouseSalesPerCity)
-                            .transitionDuration(500)
-                            .x(d3.scale.ordinal())
-                            .xUnits(dc.units.ordinal)
-                            .xAxisLabel('City Name')
-                            .yAxisLabel('Number of homes sold')
-                            .elasticY(true)
-                            .yAxis().ticks(4);
-                        
-                        var cityName = ndx.dimension(dc.pluck('City Name'));
-                        var totalHouseSalesPerCity = cityName.group().reduceSum(dc.pluck('Number of Sales'));
-                        
-                        dc.barChart("#house-sales-bar-chart")
-                            .width(900)
-                            .height(400)
-                            .margins({top: 10, right: 50, bottom: 30, left: 50})
-                            .dimension(cityName)
-                            .group(totalHouseSalesPerCity)
-                            .transitionDuration(500)
-                            .x(d3.scale.ordinal())
-                            .xUnits(dc.units.ordinal)
-                            .xAxisLabel('City Name')
-                            .yAxisLabel('Number of homes sold')
-                            .yAxis().ticks(4);
-       
-                        var houseType = ndx.dimension(dc.pluck('House Type'));
-                        var totalHouseSalesPerType = houseType.group().reduceSum(dc.pluck('Number of Sales'));
-                            
-                        dc.pieChart("#house-type-pie-chart")
-                            .height(400)
-                            .radius(150)
-                            .transitionDuration(1500)
-                            .dimension(houseType)
-                            .group(totalHouseSalesPerType);
-                            
-                        var houseTypePrice = ndx.dimension(dc.pluck('Price'))
-                        
-                        dc.barChart("#house-type-price-bar-chart")
-                            .height(400)
-                            .width(400)
-                            .margins({top: 10, right: 50, bottom: 30, left: 50})
-                            .dimension(houseType)
-                            .group(houseTypePrice)
-                            .transitionDuration(1500)
-                            .x(d3.scale.ordinal())
-                            .xUnits(dc.units.ordinal)
-                            .xAxisLabel('House Type')
-                            .yAxisLabel('Price')
-                            .yAxis().ticks(4);
-                                                
-                        dc.renderAll();
-                            
-                    </script>
-                    
+                    <div class="smaller-charts">
+                        <div id="house-type-pie-chart"></div>
+                        <div id="house-type-price-bar-chart"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -267,6 +105,7 @@
                     </div>
                 </div>
                 <div class="footer-right">
+                    <a id=contact></a>
                     <div class="contact-section">
                         <h2 class="footer-header">Contact</h2>
                         <p>Fill in form below to be kept up to date with latest developments.</p>
@@ -292,6 +131,7 @@
         </footer>
 
         <script src="assets/js/maps.js"></script>
+        <script src="assets/js/graph.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPfTSNh8PlstFHl5SlqUrQKvQWVlN1MRQ&callback=initMap"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

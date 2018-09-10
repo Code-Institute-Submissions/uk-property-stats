@@ -1,5 +1,6 @@
+//collection of data for each of the cities represented on the map
+
 var cities = [
-    ['Inverness', 'Average Price: £187,049', 'Number of homes sold: 1,369', 57.479619, -4.224938],
     ['Belfast', 'Average Price: £155,789', 'Number of homes sold: 1,517', 54.600836, -5.932751],
     ['Glasgow', 'Average Price: £172,585', 'Number of homes sold: 16,587', 55.865522, -4.252412],
     ['London', 'Average Price: £633,930', 'Number of homes sold: 49,697', 51.506791, -0.129040],
@@ -8,7 +9,6 @@ var cities = [
     ['Plymouth', 'Average Price: £211,001', 'Number of homes sold: 3,572', 50.375636, -4.146690],
     ['Bristol', 'Average Price: £326,055', 'Number of homes sold: 10,720', 51.454462, -2.588046],
     ['Swansea', 'Average Price: £174,706', 'Number of homes sold: 3,074', 51.621268, -3.943260],
-    ['Aberystwyth', 'Average Price: £213,927', 'Number of homes sold: 223', 52.415238, -4.084461],
     ['Manchester', 'Average Price: £187,913', 'Number of homes sold: 11,238', 53.480205, -2.242433],
     ['Birmingham', 'Average Price: £193,029', 'Number of homes sold: 9,830', 52.485861, -1.889658],
     ['Newcastle', 'Average Price: £198,463', 'Number of homes sold: 4,322', 54.978782, -1.616143],
@@ -17,6 +17,8 @@ var cities = [
     ['Northampton', 'Average Price: £260,809', 'Number of homes sold: 4,066', 52.240603, -0.903741]
 ];
 
+//initialising the map
+    
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 5.3, 
@@ -26,6 +28,8 @@ function initMap() {
         }
     });
     
+//Creation of the markers for each of the cities
+    
     var newMarker, i
         for (i = 0; i < cities.length; i++) {
             var cityName = cities[i][0]
@@ -34,11 +38,15 @@ function initMap() {
             var latitude = cities[i][3]
             var longitude = cities[i][4]
             
+//Setting the longitude and latitude numbers for each of the variables. These figures are gained from the data above.
+            
             setLatLong = new google.maps.LatLng(latitude, longitude);
             
             var marker = new google.maps.Marker({
                 map: map, title: cityName, position: setLatLong 
             });
+            
+//Content of box
             
             var content = `<h5>${cityName}</h5><p>${info}<p><p>${number}<p>`;
                             
