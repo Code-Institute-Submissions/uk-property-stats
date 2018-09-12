@@ -67,10 +67,10 @@ var cityPriceData = [
                             
     var cityName = ndx.dimension(dc.pluck('City Name'));
     var houseType = ndx.dimension(dc.pluck('House Type'));
-    //var totalHouseSalesPerCity = cityName.group().reduceSum(dc.pluck('Number of Sales'));
-    var totalHouseSalesPerType = houseType.group().reduceSum(dc.pluck('Number of Sales'));
     var houseTypePrice = ndx.dimension(dc.pluck('Price'));
-    var averagePriceChart = dc.barChart('#average-house-price-bar-chart');
+    
+    var totalHouseSalesPerCity = cityName.group().reduceSum(dc.pluck('Number of Sales'));
+    var totalHouseSalesPerType = houseType.group().reduceSum(dc.pluck('Number of Sales'));
                             
     //variable and function for finding the average house prices per city. Average house price bar chart                       
                             
@@ -99,7 +99,8 @@ var cityPriceData = [
             return { count: 0, total: 0, average: 0 };
         }
     );
-                            
+    
+    var averagePriceChart = dc.barChart('#average-house-price-bar-chart');                        
     averagePriceChart
         .width(850)
         .height(430)
@@ -115,55 +116,17 @@ var cityPriceData = [
         .yAxisLabel('Average Price (£)')
         .elasticY(true)
         .yAxis().ticks(4);
-                            
-    //variables for finding the total number of home sales per type. This is used in the stacked chart. Stacked chart showing number of house sales per type
-                            
-    var totalHouseSalesDetached = cityName.group().reduceSum(function (d) {
-        if (d.houseType === "Detached") {
-            return +d.totalHouseSalesPerType;
-        } else {
-            return 0;
-        }
-    });
-                            
-    var totalHouseSalesSemiDetached = cityName.group().reduceSum(function (d) {
-        if (d.houseType === "Semi-Detached") {
-            return +d.totalHouseSalesPerType;
-        } else {
-            return 0;
-        }
-    });
-                            
-    var totalHouseSalesTerraced= cityName.group().reduceSum(function (d) {
-        if (d.houseType === "Terraced") {
-            return +d.totalHouseSalesPerType;
-        } else {
-            return 0;
-        }
-    });
-                            
-    var totalHouseSalesFlats = cityName.group().reduceSum(function (d) {
-        if (d.houseType === "Flats") {
-            return +d.totalHouseSalesPerType;
-        } else {
-            return 0;
-        }
-    });
-    
-    var stackedNumberChart = dc.barChart("#house-sales-bar-chart");
-    stackedNumberChart
+
+    var salesNumberChart = dc.barChart("#house-sales-bar-chart");
+    salesNumberChart
         .width(850)
         .height(430)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(cityName)
-        .group(totalHouseSalesDetached, "Detached")
-        .stack(totalHouseSalesSemiDetached, "Semi-Detached")
-        .stack(totalHouseSalesTerraced, "Terraced")
-        .stack(totalHouseSalesFlats, "Flats")
+        .group(totalHouseSalesPerCity)
         .transitionDuration(500)
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
-        .legend(dc.legend().x(100).y(20).itemHeight(15).gap(5))
         .xAxisLabel('City Name')
         .yAxisLabel('Number of homes sold')
         .elasticY(true)

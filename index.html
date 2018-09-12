@@ -19,7 +19,7 @@
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.min.css" type="text/css" />
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.min.js"></script>
         
         <title>UK Property Stats</title>
@@ -74,23 +74,44 @@
                         <h2 class="section-heading">Number of Home sales per City</h2>
                         <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aliquid perspiciatis fugit voluptate tempora. Labore dolores, consequuntur. Perferendis, nihil cupiditate!</p>
                     </div>
+                    
+                    <div class="chart-toggle-buttons">
+                        <button type="select-prices" class="btn btn-dark">House Prices</button>
+                        <button type="select-sales" class="btn btn-dark">House Sales</button>
+                    </div>
                         
                     <div class="chart-intro">
                         <h3 class="chart-header">Average House Price Per Area</h3>
                         <p class="chart-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ad aperiam recusandae, asperiores debitis fuga. Facilis quos, velit modi eius.</p>
+                        <div id="average-house-price-bar-chart"></div>
                     </div>
-                    <div id="average-house-price-bar-chart"></div>
                         
                     <div class="chart-intro">
                         <h3 class="chart-header">Total Number of Homes sold per Area</h3>
                         <p class="chart-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ad aperiam recusandae, asperiores debitis fuga. Facilis quos, velit modi eius.</p>
+                        <div id="house-sales-bar-chart"></div>
                     </div>
-                    <div id="house-sales-bar-chart"></div>
-                        
+                    
                     <div class="smaller-charts">
                         <div id="house-type-pie-chart"></div>
                         <div id="house-type-price-bar-chart"></div>
                     </div>
+                    
+                    <div class="chart-intro">
+                        <h3 class="chart-header">Number of House Sales per Year</h3>
+                        <p class="chart-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ad aperiam recusandae, asperiores debitis fuga. Facilis quos, velit modi eius.</p>
+                        <div id="house-sales-over-time"></div>
+                    </div>
+                    
+                    <div class="chart-intro">
+                        <h3 class="chart-header">House Prices over Time</h3>
+                        <p class="chart-paragraph">There have been major changes in the house prices over the UK over the last few years. This chart shows the prices in the January of each year from 2006.</p>
+                        <div id="house-prices-over-time"></div>
+                    </div>
+                    
+                    <script src="assets/js/line.js"></script>
+                    <script src="assets/js/graph.js"></script>
+                    
                 </div>
             </div>
         </section>
@@ -132,6 +153,7 @@
 
         <script src="assets/js/maps.js"></script>
         <script src="assets/js/graph.js"></script>
+        <script src="assets/js/line.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPfTSNh8PlstFHl5SlqUrQKvQWVlN1MRQ&callback=initMap"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -70,6 +70,15 @@
 
 /*Heading and intro text to the different charts*/
 
+.chart-toggle-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 20px 0;
+}
+
 .main-content-charts {
     display: flex;
     justify-content: center;
@@ -125,7 +134,9 @@
 }
 
 #house-sales-bar-chart,
-#average-house-price-bar-chart {
+#average-house-price-bar-chart,
+#house-sales-over-time,
+#house-prices-over-time {
     height: 450px;
     width: 100%;
     margin: 5px 0;
@@ -246,6 +257,18 @@
 
 @media (min-width: 768px) {
     
+    .chart-toggle-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0 20px 0;
+    }
+    
+    .chart-toggle-buttons button {
+        margin: 0 20px;
+    }
+    
     .section-intro {
         display: flex;
         flex-direction: column;
@@ -280,6 +303,13 @@
     #map {
         max-width: 950px;
     }
+    
+    #house-sales-bar-chart,
+    #average-house-price-bar-chart,
+    #house-sales-over-time,
+    #house-prices-over-time {
+        overflow-x: hidden;
+    }
 
 }
 
@@ -289,7 +319,7 @@
     .section-intro,
     .chart-intro,
     .footer-top {
-        width: 75%;
+        width: 90%;
     }
     
 }
