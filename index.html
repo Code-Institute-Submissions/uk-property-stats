@@ -54,7 +54,7 @@
                     <div class="opening-text-container">
                         <div class="opening-intro">
                             <h1 class="intro-heading">UK Property Stats</h1>
-                            <p class="intro-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, hic, doloribus. Laboriosam, recusandae enim aperiam velit, a veritatis molestiae placeat sed perspiciatis magnam nisi, est incidunt rem quas reprehenderit, veniam distinctio. Quaerat repudiandae earum voluptate minus, dolore, cumque quisquam ullam!</p>
+                            <p class="intro-paragraph">House Prices and sales have become a national past time discussion over the last few years. This website gives you an overview into the numbers of house sales over the last few years and the prices at which they have been sold. Look at the map of the UK to find the location of the cities and the prices, and then have a look at the sales and price chart below.</p>
                         </div>
                     </div>
                 </div>
@@ -66,52 +66,58 @@
                 <div class="site-info">
                     <div class="section-intro">
                         <h2 class="section-heading">Map</h2>
-                        <p class="section-paragraph">Click on the cities on the map to see the average house prices in these areas.</p>
+                        <p class="section-paragraph"><b>Click</b> on the cities on the map to see the average house prices in these areas.</p>
                     </div>
                     <div id="map"></div>
                     <a id=charts></a>
                     <div class="section-intro">
-                        <h2 class="section-heading">Number of Home sales per City</h2>
-                        <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aliquid perspiciatis fugit voluptate tempora. Labore dolores, consequuntur. Perferendis, nihil cupiditate!</p>
+                        <h2 class="section-heading">House Prices and House Sales</h2>
+                        <p class="section-paragraph"><b>Click</b> on the buttons below to reveal charts regarding the number of house sales or to compare house sales in cities near you, and to compare those with the rest of the UK!</p>
                     </div>
                     
                     <div class="chart-toggle-buttons">
-                        <button type="select-prices" class="btn btn-dark">House Prices</button>
-                        <button type="select-sales" class="btn btn-dark">House Sales</button>
+                        <button type="select-prices" id="price-button" class="btn btn-dark">House Prices</button>
+                        <button type="select-sales" id="sales-button" class="btn btn-dark">House Sales</button>
                     </div>
                         
-                    <div class="chart-intro">
+                    <div class="chart-intro price-chart">
                         <h3 class="chart-header">Average House Price Per Area</h3>
-                        <p class="chart-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ad aperiam recusandae, asperiores debitis fuga. Facilis quos, velit modi eius.</p>
+                        <p class="chart-paragraph">The following bar chart shows the average house prices in different cities of the UK. <b>Click</b> on one of the city bars and see how it affects the bar chart below, which shows the difference in house prices for particular house types. You can click on more than one city.</p>
                         <div id="average-house-price-bar-chart"></div>
                     </div>
                         
-                    <div class="chart-intro">
+                    <div class="chart-intro sales-chart">
                         <h3 class="chart-header">Total Number of Homes sold per Area</h3>
-                        <p class="chart-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ad aperiam recusandae, asperiores debitis fuga. Facilis quos, velit modi eius.</p>
+                        <p class="chart-paragraph">The following bar chart shows the number of house prices in different cities of the UK. <b>Click</b> on one of the city bars below, and see how this number is divided between the different house types in the bar.</p>
                         <div id="house-sales-bar-chart"></div>
                     </div>
                     
-                    <div class="smaller-charts">
+                    <div class="chart-intro sales-chart">
+                        <h3 class="chart-header">Number of House Sales per Type</h3>
+                        <p class="chart-paragraph">This pie chart shows the split in house types that have been sold. <b>Click</b> on a type in the pie chart and compare the amount of sales of this house type in each of the cities in the chart above.</p>
                         <div id="house-type-pie-chart"></div>
+                    </div>
+                    
+                    <div class="chart-intro price-chart">
+                        <h3 class="chart-header">Average House Prices per Year</h3>
+                        <p class="chart-paragraph"></p>
                         <div id="house-type-price-bar-chart"></div>
                     </div>
                     
-                    <div class="chart-intro">
+                    <div class="chart-intro sales-chart">
                         <h3 class="chart-header">Number of House Sales per Year</h3>
-                        <p class="chart-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ad aperiam recusandae, asperiores debitis fuga. Facilis quos, velit modi eius.</p>
+                        <p class="chart-paragraph">This line graph shows the yearly house sales since 2006. </p>
                         <div id="house-sales-over-time"></div>
                     </div>
                     
-                    <div class="chart-intro">
+                    <div class="chart-intro price-chart">
                         <h3 class="chart-header">House Prices over Time</h3>
-                        <p class="chart-paragraph">There have been major changes in the house prices over the UK over the last few years. This chart shows the prices in the January of each year from 2006.</p>
+                        <p class="chart-paragraph">There have been major changes in the house prices over the UK over the last few years. This line graph shows the prices in the January of each year from 2006.</p>
                         <div id="house-prices-over-time"></div>
                     </div>
                     
                     <script src="assets/js/line.js"></script>
                     <script src="assets/js/graph.js"></script>
-                    
                 </div>
             </div>
         </section>
@@ -121,8 +127,8 @@
                 <div class="footer-left">
                     <div class="about-section">
                         <h2 class="footer-header">About</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium recusandae a blanditiis, omnis sunt magni, molestias quis quam autem at.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo commodi asperiores error, distinctio architecto in laudantium dignissimos vero consequatur, adipisci eaque obcaecati reiciendis ullam, quas, non excepturi odio. Vel, nesciunt.</p>
+                        <p>This UK Property site shows the latest prices and number of sales in cities around the UK. The statistics can also be divided for different house types.</p>
+                        <p>Numbers change over time and the line graphs show the changes that have occured over time in the number of sales and prices. Whether this is a good indication of whats going to happen into the future remains to be seen, so be sure to follow the latest updates.</p>
                     </div>
                 </div>
                 <div class="footer-right">
@@ -154,6 +160,8 @@
         <script src="assets/js/maps.js"></script>
         <script src="assets/js/graph.js"></script>
         <script src="assets/js/line.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+        <script src="assets/js/graphButton.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPfTSNh8PlstFHl5SlqUrQKvQWVlN1MRQ&callback=initMap"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
