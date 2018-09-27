@@ -69,38 +69,12 @@ var cityPriceData = [
     var houseType = ndx.dimension(dc.pluck("House Type"));
     var totalHouseSalesPerCity = cityName.group().reduceSum(dc.pluck("Number of Sales"));
     var totalHouseSalesPerType = houseType.group().reduceSum(dc.pluck("Number of Sales"));
-    /*var houseTypePrice = ndx.dimension(dc.pluck("Price"));*/
+    var houseTypePrice = ndx.dimension(dc.pluck("Price"));
                             
     //variable and function for finding the average house prices per city. Average house price bar chart                       
     
     var averageHousePricePerCity = cityName.group().reduce(
                                 
-        function (p, v) {
-            p.count++;
-            p.total += v.Price;
-            p.average = p.total / p.count;
-            return p;
-        },
-                                
-        function (p, v) {
-            p.count--;
-            if (p.count == 0) {
-                p.total = 0;
-                p.average = 0;
-            } else {
-                p.total -= v.Price;
-                p.average = p.total / p.count;
-            }
-            return p;
-        },
-                                
-        function () {
-            return { count: 0, total: 0, average: 0 };
-        }
-    );
-    
-    var houseTypePrice = houseType.group().reduce(
-        
         function (p, v) {
             p.count++;
             p.total += v.Price;
@@ -158,9 +132,11 @@ var cityPriceData = [
         .yAxis().ticks(4);
     
     //house type pie chart
-                                
-    dc.pieChart("#house-type-pie-chart")
+    
+    var houseTypeSalesPieChart = dc.pieChart("#house-type-pie-chart");
+    houseTypeSalesPieChart
         .height(350)
+        .width(350)
         .radius(150)
         .transitionDuration(1500)
         .dimension(houseType)
@@ -168,13 +144,43 @@ var cityPriceData = [
                                 
     //house price per type bar chart
     
-    dc.barChart("#house-type-price-bar-chart")                  
+    var averageHousePricePerType = houseType.group().reduce(
+        
+        function (p, v) {
+            p.count++;
+            p.total += v.Price;
+            p.average = p.total / p.count;
+            return p;
+        },
+                                
+        function (p, v) {
+            p.count--;
+            if (p.count == 0) {
+                p.total = 0;
+                p.average = 0;
+            } else {
+                p.total -= v.Price;
+                p.average = p.total / p.count;
+            }
+            return p;
+        },
+                                
+        function () {
+            return { count: 0, total: 0, average: 0 };
+        }
+    );
+
+    var houseTypePriceBarChart = dc.barChart("#house-type-price-bar-chart");
+    houseTypePriceBarChart
+        .width(370)
         .height(430)
-        .width(400)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(houseType)
-        .group(houseTypePrice)
-        .transitionDuration(1500)
+        .group(averageHousePricePerType)
+        .valueAccessor(function (d) {
+            return d.value.average;
+        })
+        .transitionDuration(500)
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .xAxisLabel("House Type")

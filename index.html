@@ -82,38 +82,50 @@
                         
                     <div class="chart-intro price-chart">
                         <h3 class="chart-header">Average House Price Per Area</h3>
-                        <p class="chart-paragraph">The following bar chart shows the average house prices in different cities of the UK. <b>Click</b> on one of the city bars and see how it affects the bar chart below, which shows the difference in house prices for particular house types. You can click on more than one city.</p>
-                        <div id="average-house-price-bar-chart"></div>
+                        <p class="chart-paragraph">The following bar chart shows the average house prices in different cities of the UK. <b>Click on one of the city bars</b> and see how it affects the <b>bar chart below</b>, which shows the difference in house prices for particular house types. You can click on more than one city.</p>
+                        <div class="chart-container">
+                            <div class="chart-area" id="average-house-price-bar-chart"></div>
+                        </div>
                     </div>
                         
                     <div class="chart-intro sales-chart">
                         <h3 class="chart-header">Total Number of Homes sold per Area</h3>
                         <p class="chart-paragraph">The following bar chart shows the number of house prices in different cities of the UK. <b>Click</b> on one of the city bars below, and see how this number is divided between the different house types in the bar.</p>
-                        <div id="house-sales-bar-chart"></div>
+                        <div class="chart-container">
+                            <div class="chart-area" id="house-sales-bar-chart"></div>
+                        </div>
                     </div>
                     
                     <div class="chart-intro sales-chart">
                         <h3 class="chart-header">Number of House Sales per Type</h3>
-                        <p class="chart-paragraph">This pie chart shows the split in house types that have been sold. <b>Click</b> on a type in the pie chart and compare the amount of sales of this house type in each of the cities in the chart above.</p>
-                        <div id="house-type-pie-chart"></div>
+                        <p class="chart-paragraph">This pie chart shows the split in house types that have been sold. <b>Click on a house type</b> in the pie chart and compare the amount of sales of this house type in each of the cities in the <b>bar chart above.</b></p>
+                        <div class="chart-container">
+                            <div class="chart-area" id="house-type-pie-chart"></div>
+                        </div>
                     </div>
                     
                     <div class="chart-intro price-chart">
-                        <h3 class="chart-header">Average House Prices per Year</h3>
-                        <p class="chart-paragraph"></p>
-                        <div id="house-type-price-bar-chart"></div>
+                        <h3 class="chart-header">Average Price per House Type</h3>
+                        <p class="chart-paragraph">This bar chart shows the prices of the different types of house. Click on a bar and see the prices of this house type in each of the cities above.</p>
+                        <div class="chart-container">
+                            <div class="chart-area" id="house-type-price-bar-chart"></div>
+                        </div>
                     </div>
                     
                     <div class="chart-intro sales-chart">
                         <h3 class="chart-header">Number of House Sales per Year</h3>
-                        <p class="chart-paragraph">This line graph shows the yearly house sales since 2006. </p>
-                        <div id="house-sales-over-time"></div>
+                        <p class="chart-paragraph">This line graph shows the number of yearly house sales since 2006. </p>
+                        <div class="chart-container">
+                            <div class="chart-area" id="house-sales-over-time"></div>
+                        </div>
                     </div>
                     
                     <div class="chart-intro price-chart">
                         <h3 class="chart-header">House Prices over Time</h3>
                         <p class="chart-paragraph">There have been major changes in the house prices over the UK over the last few years. This line graph shows the prices in the January of each year from 2006.</p>
-                        <div id="house-prices-over-time"></div>
+                        <div class="chart-container">
+                            <div class="chart-area" id="house-prices-over-time"></div>
+                        </div>
                     </div>
                     
                     <script src="assets/js/line.js"></script>
