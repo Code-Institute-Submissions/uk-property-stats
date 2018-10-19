@@ -1,6 +1,6 @@
 //city house price data showing different types, price
                     
-var cityPriceData = [
+/*var cityPriceData = [
     {"City Name": "Belfast", "House Type": "Detached", "Price": 381987, "Number of Sales": 283},
     {"City Name": "Belfast", "House Type": "Semi-Detached", "Price": 182474, "Number of Sales": 522},
     {"City Name": "Belfast", "House Type": "Terraced", "Price": 109178, "Number of Sales": 378},
@@ -72,8 +72,7 @@ var salesByYear = [
     {"Year": "2015", "Price": 190665, "Number of Sales": 1226050},
     {"Year": "2016", "Price": 205404, "Number of Sales": 1233030},
     {"Year": "2017", "Price": 218225, "Number of Sales": 1223650}
-];
-                        
+];*/
     // variable containing the collection of data
     
     //Data for the bar graphs and the bar charts
@@ -89,58 +88,10 @@ var salesByYear = [
     var totalHouseSalesPerType = houseType.group().reduceSum(dc.pluck("Number of Sales"));
     var houseTypePrice = dataCollection.dimension(dc.pluck("Price"));
                             
-    //variable and function for finding the average house prices per city. Average house price bar chart                       
-    var averageHousePricePerCity = cityName.group().reduce(
-                                
-        function (p, v) {
-            p.count++;
-            p.total += v.Price;
-            p.average = p.total / p.count;
-            return p;
-        },
-                                
-        function (p, v) {
-            p.count--;
-            if (p.count == 0) {
-                p.total = 0;
-                p.average = 0;
-            } else {
-                p.total -= v.Price;
-                p.average = p.total / p.count;
-            }
-            return p;
-        },
-                                
-        function () {
-            return { count: 0, total: 0, average: 0 };
-        }
-    );
-    
-    var averageHousePricePerType = houseType.group().reduce(
-            
-        function (p, v) {
-            p.count++;
-            p.total += v.Price;
-            p.average = p.total / p.count;
-            return p;
-        },
-                                    
-        function (p, v) {
-            p.count--;
-            if (p.count == 0) {
-                p.total = 0;
-                p.average = 0;
-            } else {
-                p.total -= v.Price;
-                p.average = p.total / p.count;
-            }
-            return p;
-        },
-                                    
-        function () {
-            return { count: 0, total: 0, average: 0 };
-        }
-    );
+    //variable and function for finding the average house prices per city.
+        
+    var averageHousePricePerCity = averagingData(cityName);
+    var averageHousePricePerType = averagingData(houseType);
     
     /*Variables to be used for the line graph*/
     
@@ -152,93 +103,103 @@ var salesByYear = [
     
     /*Creating the charts*/
     
-    var averagePriceChart = dc.barChart("#average-house-price-bar-chart");                        
-    averagePriceChart
-        .width(600)
-        .height(400)
-        .margins({top: 30, right: 50, bottom: 30, left: 50})
-        .dimension(cityName)
-        .group(averageHousePricePerCity)
-        .valueAccessor(function (d) {
-            return d.value.average;
-        })
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .xAxisLabel("City Name")
-        .yAxisLabel("Average Price (£)")
-        .elasticY(true)
-        .yAxis().ticks(4);
+    //Large bar chart for the average price bar chart. This is connected to the house type average price bar chart.
+    queue()
+        .defer(d3.json, "assets/data/cityPriceData.json")
+        .defer(d3.json, "assets/data/salesByYear.json")
+        .await(makeGraphs);       
+    
+        function makeGraphs() {
         
-    var salesNumberChart = dc.barChart("#house-sales-bar-chart");
-    salesNumberChart
-        .width(600)
-        .height(400)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
-        .dimension(cityName)
-        .group(totalHouseSalesPerCity)
-        .transitionDuration(500)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .xAxisLabel("City Name")
-        .yAxisLabel("Number of homes sold")
-        .elasticY(true)
-        .yAxis().ticks(4);
+        var averagePriceChart = dc.barChart("#average-house-price-bar-chart");                        
+        averagePriceChart
+            .width(600)
+            .height(400)
+            .margins({top: 30, right: 50, bottom: 30, left: 50})
+            .dimension(cityName)
+            .group(averageHousePricePerCity)
+            .valueAccessor(function (d) {
+                return d.value.average;
+            })
+            .x(d3.scale.ordinal())
+            .xUnits(dc.units.ordinal)
+            .xAxisLabel("City Name")
+            .yAxisLabel("Average Price (£)")
+            .elasticY(true)
+            .yAxis().ticks(4);
             
-    //house type pie chart
-            
-    var houseTypeSalesPieChart = dc.pieChart("#house-type-pie-chart");
-    houseTypeSalesPieChart
-        .height(300)
-        .width(300)
-        .radius(135)
-        .transitionDuration(1500)
-        .dimension(houseType)
-        .group(totalHouseSalesPerType);
-                                        
-    //house price per type bar chart
+        //House price per type bar chart
+        var houseTypePriceBarChart = dc.barChart("#house-type-price-bar-chart");
+        houseTypePriceBarChart
+            .width(300)
+            .height(400)
+            .margins({top: 10, right: 50, bottom: 30, left: 50})
+            .dimension(houseType)
+            .group(averageHousePricePerType)
+            .valueAccessor(function (d) {
+                return d.value.average;
+            })
+            .transitionDuration(500)
+            .x(d3.scale.ordinal())
+            .xUnits(dc.units.ordinal)
+            .xAxisLabel("House Type")
+            .yAxisLabel("Price")
+            .elasticY(true)
+            .yAxis().ticks(4);
         
-    var houseTypePriceBarChart = dc.barChart("#house-type-price-bar-chart");
-    houseTypePriceBarChart
-        .width(300)
-        .height(400)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
-        .dimension(houseType)
-        .group(averageHousePricePerType)
-        .valueAccessor(function (d) {
-            return d.value.average;
-        })
-        .transitionDuration(500)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .xAxisLabel("House Type")
-        .yAxisLabel("Price")
-        .elasticY(true)
-        .yAxis().ticks(4);
+        //Large bar chart for the number of sales. This is connected to the pie chart for number of house type sales.    
+        var salesNumberChart = dc.barChart("#house-sales-bar-chart");
+        salesNumberChart
+            .width(600)
+            .height(400)
+            .margins({top: 10, right: 50, bottom: 30, left: 50})
+            .dimension(cityName)
+            .group(totalHouseSalesPerCity)
+            .transitionDuration(500)
+            .x(d3.scale.ordinal())
+            .xUnits(dc.units.ordinal)
+            .xAxisLabel("City Name")
+            .yAxisLabel("Number of homes sold")
+            .elasticY(true)
+            .yAxis().ticks(4);
                 
-    var houseSalesLineChart = dc.lineChart("#house-sales-over-time");
-    houseSalesLineChart
-        .width(500)
-        .height(300)
-        .margins({top: 30, right: 50, bottom: 30, left: 50})
-        .dimension(yearDate)
-        .group(salesPerYear)
-        .transitionDuration(500)
-        .x(d3.time.scale().domain([earlyDate, lateDate]))
-        .xAxisLabel("Year")
-        .yAxisLabel("Number of Sales")
-        .yAxis().ticks(4);
-                                        
-    var housePriceLineChart = dc.lineChart("#house-prices-over-time");
-    housePriceLineChart
-        .width(500)
-        .height(300)
-        .margins({top: 30, right: 50, bottom: 30, left: 50})
-        .dimension(yearDate)
-        .group(januaryPrice)
-        .transitionDuration(500)
-        .x(d3.time.scale().domain([earlyDate, lateDate]))
-        .xAxisLabel("Year")
-        .yAxisLabel("Price in January (£)")
-        .yAxis().ticks(4);
+        //house type pie chart
+        var houseTypeSalesPieChart = dc.pieChart("#house-type-pie-chart");
+        houseTypeSalesPieChart
+            .height(300)
+            .width(300)
+            .radius(135)
+            .transitionDuration(1500)
+            .dimension(houseType)
+            .group(totalHouseSalesPerType);
+            
+        //Line chart for sales of houses over the last few years
+        var houseSalesLineChart = dc.lineChart("#house-sales-over-time");
+        houseSalesLineChart
+            .width(500)
+            .height(300)
+            .margins({top: 30, right: 50, bottom: 30, left: 50})
+            .dimension(yearDate)
+            .group(salesPerYear)
+            .transitionDuration(500)
+            .x(d3.time.scale().domain([earlyDate, lateDate]))
+            .xAxisLabel("Year")
+            .yAxisLabel("Number of Sales")
+            .yAxis().ticks(4);
+            
+        //Line chart for the price of houses over the last few years
+        var housePriceLineChart = dc.lineChart("#house-prices-over-time");
+        housePriceLineChart
+            .width(500)
+            .height(300)
+            .margins({top: 30, right: 50, bottom: 30, left: 50})
+            .dimension(yearDate)
+            .group(januaryPrice)
+            .transitionDuration(500)
+            .x(d3.time.scale().domain([earlyDate, lateDate]))
+            .xAxisLabel("Year")
+            .yAxisLabel("Price in January (£)")
+            .yAxis().ticks(4);
+    }
                                                             
     dc.renderAll();
