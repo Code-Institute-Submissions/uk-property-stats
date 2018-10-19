@@ -58,10 +58,28 @@ var cityPriceData = [
     {"City Name": "Northampton", "House Type": "Terraced", "Price": 196907, "Number of Sales": 1212},
     {"City Name": "Northampton", "House Type": "Flats", "Price": 133656, "Number of Sales": 395},
 ];
+
+var salesByYear = [
+    {"Year": "2006", "Price": 159970, "Number of Sales": 1668470},
+    {"Year": "2007", "Price": 176758, "Number of Sales": 1618880},
+    {"Year": "2008", "Price": 185782, "Number of Sales": 916920},
+    {"Year": "2009", "Price": 157234, "Number of Sales": 847540},
+    {"Year": "2010", "Price": 167469, "Number of Sales": 883520},
+    {"Year": "2011", "Price": 167300, "Number of Sales": 882870},
+    {"Year": "2012", "Price": 165908, "Number of Sales": 931390},
+    {"Year": "2013", "Price": 167716, "Number of Sales": 1067270},
+    {"Year": "2014", "Price": 178182, "Number of Sales": 1222910},
+    {"Year": "2015", "Price": 190665, "Number of Sales": 1226050},
+    {"Year": "2016", "Price": 205404, "Number of Sales": 1233030},
+    {"Year": "2017", "Price": 218225, "Number of Sales": 1223650}
+];
                         
-    // variable containing the collection of datas
-                            
+    // variable containing the collection of data
+    
+    //Data for the bar graphs and the bar charts
     var dataCollection = crossfilter(cityPriceData);
+    //Data for the line graphs which contain the data over time
+    var yearSalesPriceData = crossfilter(salesByYear);
                             
     //variables to be used
                             
@@ -72,7 +90,6 @@ var cityPriceData = [
     var houseTypePrice = dataCollection.dimension(dc.pluck("Price"));
                             
     //variable and function for finding the average house prices per city. Average house price bar chart                       
-    
     var averageHousePricePerCity = cityName.group().reduce(
                                 
         function (p, v) {
@@ -99,6 +116,42 @@ var cityPriceData = [
         }
     );
     
+    var averageHousePricePerType = houseType.group().reduce(
+            
+        function (p, v) {
+            p.count++;
+            p.total += v.Price;
+            p.average = p.total / p.count;
+            return p;
+        },
+                                    
+        function (p, v) {
+            p.count--;
+            if (p.count == 0) {
+                p.total = 0;
+                p.average = 0;
+            } else {
+                p.total -= v.Price;
+                p.average = p.total / p.count;
+            }
+            return p;
+        },
+                                    
+        function () {
+            return { count: 0, total: 0, average: 0 };
+        }
+    );
+    
+    /*Variables to be used for the line graph*/
+    
+    var yearDate = yearSalesPriceData.dimension(dc.pluck("Year"));
+    var januaryPrice = yearDate.group().reduceSum(dc.pluck("Price"));
+    var salesPerYear = yearDate.group().reduceSum(dc.pluck("Number of Sales"));
+    var earlyDate = yearDate.bottom(1)[0].Year;
+    var lateDate = yearDate.top(1)[0].Year;
+    
+    /*Creating the charts*/
+    
     var averagePriceChart = dc.barChart("#average-house-price-bar-chart");                        
     averagePriceChart
         .width(600)
@@ -115,7 +168,7 @@ var cityPriceData = [
         .yAxisLabel("Average Price (£)")
         .elasticY(true)
         .yAxis().ticks(4);
-
+        
     var salesNumberChart = dc.barChart("#house-sales-bar-chart");
     salesNumberChart
         .width(600)
@@ -130,9 +183,9 @@ var cityPriceData = [
         .yAxisLabel("Number of homes sold")
         .elasticY(true)
         .yAxis().ticks(4);
-    
+            
     //house type pie chart
-    
+            
     var houseTypeSalesPieChart = dc.pieChart("#house-type-pie-chart");
     houseTypeSalesPieChart
         .height(300)
@@ -141,35 +194,9 @@ var cityPriceData = [
         .transitionDuration(1500)
         .dimension(houseType)
         .group(totalHouseSalesPerType);
-                                
+                                        
     //house price per type bar chart
-    
-    var averageHousePricePerType = houseType.group().reduce(
         
-        function (p, v) {
-            p.count++;
-            p.total += v.Price;
-            p.average = p.total / p.count;
-            return p;
-        },
-                                
-        function (p, v) {
-            p.count--;
-            if (p.count == 0) {
-                p.total = 0;
-                p.average = 0;
-            } else {
-                p.total -= v.Price;
-                p.average = p.total / p.count;
-            }
-            return p;
-        },
-                                
-        function () {
-            return { count: 0, total: 0, average: 0 };
-        }
-    );
-
     var houseTypePriceBarChart = dc.barChart("#house-type-price-bar-chart");
     houseTypePriceBarChart
         .width(300)
@@ -187,5 +214,31 @@ var cityPriceData = [
         .yAxisLabel("Price")
         .elasticY(true)
         .yAxis().ticks(4);
-                                                        
+                
+    var houseSalesLineChart = dc.lineChart("#house-sales-over-time");
+    houseSalesLineChart
+        .width(500)
+        .height(300)
+        .margins({top: 30, right: 50, bottom: 30, left: 50})
+        .dimension(yearDate)
+        .group(salesPerYear)
+        .transitionDuration(500)
+        .x(d3.time.scale().domain([earlyDate, lateDate]))
+        .xAxisLabel("Year")
+        .yAxisLabel("Number of Sales")
+        .yAxis().ticks(4);
+                                        
+    var housePriceLineChart = dc.lineChart("#house-prices-over-time");
+    housePriceLineChart
+        .width(500)
+        .height(300)
+        .margins({top: 30, right: 50, bottom: 30, left: 50})
+        .dimension(yearDate)
+        .group(januaryPrice)
+        .transitionDuration(500)
+        .x(d3.time.scale().domain([earlyDate, lateDate]))
+        .xAxisLabel("Year")
+        .yAxisLabel("Price in January (£)")
+        .yAxis().ticks(4);
+                                                            
     dc.renderAll();
