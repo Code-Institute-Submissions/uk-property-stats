@@ -15,8 +15,8 @@ var salesByYear = [
     {"Year": "2017", "Price": 218225, "Number of Sales": 1223650}
 ];
                         
-var ndx = crossfilter(salesByYear);
-var yearDate = ndx.dimension(dc.pluck("Year"));
+var yearSalesPriceData = crossfilter(salesByYear);
+var yearDate = yearSalesPriceData.dimension(dc.pluck("Year"));
 var januaryPrice = yearDate.group().reduceSum(dc.pluck("Price"));
 var salesPerYear = yearDate.group().reduceSum(dc.pluck("Number of Sales"));
 var earlyDate = yearDate.bottom(1)[0].Year;

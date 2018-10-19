@@ -61,15 +61,15 @@ var cityPriceData = [
                         
     // variable containing the collection of datas
                             
-    var ndx = crossfilter(cityPriceData);
+    var dataCollection = crossfilter(cityPriceData);
                             
     //variables to be used
                             
-    var cityName = ndx.dimension(dc.pluck("City Name"));
-    var houseType = ndx.dimension(dc.pluck("House Type"));
+    var cityName = dataCollection.dimension(dc.pluck("City Name"));
+    var houseType = dataCollection.dimension(dc.pluck("House Type"));
     var totalHouseSalesPerCity = cityName.group().reduceSum(dc.pluck("Number of Sales"));
     var totalHouseSalesPerType = houseType.group().reduceSum(dc.pluck("Number of Sales"));
-    var houseTypePrice = ndx.dimension(dc.pluck("Price"));
+    var houseTypePrice = dataCollection.dimension(dc.pluck("Price"));
                             
     //variable and function for finding the average house prices per city. Average house price bar chart                       
     
@@ -101,8 +101,8 @@ var cityPriceData = [
     
     var averagePriceChart = dc.barChart("#average-house-price-bar-chart");                        
     averagePriceChart
-        .width(850)
-        .height(430)
+        .width(600)
+        .height(400)
         .margins({top: 30, right: 50, bottom: 30, left: 50})
         .dimension(cityName)
         .group(averageHousePricePerCity)
@@ -118,8 +118,8 @@ var cityPriceData = [
 
     var salesNumberChart = dc.barChart("#house-sales-bar-chart");
     salesNumberChart
-        .width(850)
-        .height(430)
+        .width(600)
+        .height(400)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(cityName)
         .group(totalHouseSalesPerCity)
@@ -135,9 +135,9 @@ var cityPriceData = [
     
     var houseTypeSalesPieChart = dc.pieChart("#house-type-pie-chart");
     houseTypeSalesPieChart
-        .height(350)
-        .width(350)
-        .radius(150)
+        .height(300)
+        .width(300)
+        .radius(135)
         .transitionDuration(1500)
         .dimension(houseType)
         .group(totalHouseSalesPerType);
@@ -172,8 +172,8 @@ var cityPriceData = [
 
     var houseTypePriceBarChart = dc.barChart("#house-type-price-bar-chart");
     houseTypePriceBarChart
-        .width(370)
-        .height(430)
+        .width(300)
+        .height(400)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(houseType)
         .group(averageHousePricePerType)

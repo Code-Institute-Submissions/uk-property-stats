@@ -25,10 +25,13 @@ function initMap() {
         center: {
             lat: 54.336316, 
             lng: -3.943989
-        }
+        },
+        mapTypeId: google.maps.MapTypeId.SATELLITE
     });
     
 //Creation of the markers for each of the cities
+    
+    var currentWindow = null;
     
     var newMarker, i
         for (i = 0; i < cities.length; i++) {
@@ -51,12 +54,17 @@ function initMap() {
             var content = `<h5>${cityName}</h5><p>${info}<p><p>${number}<p>`;
                             
             var infoWindow = new google.maps.InfoWindow()
-
+            
             google.maps.event.addListener(marker,'click', (function(marker,content,infoWindow){ 
                 return function() {
+                if (currentWindow) {
+                    currentWindow.close()
+                };
                 infoWindow.setContent(content);
                 infoWindow.open(map, marker);
+                currentWindow = infoWindow;
             };
+            
         })(marker,content,infoWindow));  
     }
 }
