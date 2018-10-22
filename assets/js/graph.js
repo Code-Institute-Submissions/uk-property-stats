@@ -1,6 +1,6 @@
 //city house price data showing different types, price
                     
-/*var cityPriceData = [
+var cityPriceData = [
     {"City Name": "Belfast", "House Type": "Detached", "Price": 381987, "Number of Sales": 283},
     {"City Name": "Belfast", "House Type": "Semi-Detached", "Price": 182474, "Number of Sales": 522},
     {"City Name": "Belfast", "House Type": "Terraced", "Price": 109178, "Number of Sales": 378},
@@ -72,7 +72,7 @@ var salesByYear = [
     {"Year": "2015", "Price": 190665, "Number of Sales": 1226050},
     {"Year": "2016", "Price": 205404, "Number of Sales": 1233030},
     {"Year": "2017", "Price": 218225, "Number of Sales": 1223650}
-];*/
+];
     // variable containing the collection of data
     
     //Data for the bar graphs and the bar charts
@@ -104,18 +104,12 @@ var salesByYear = [
     /*Creating the charts*/
     
     //Large bar chart for the average price bar chart. This is connected to the house type average price bar chart.
-    queue()
-        .defer(d3.json, "assets/data/cityPriceData.json")
-        .defer(d3.json, "assets/data/salesByYear.json")
-        .await(makeGraphs);       
-    
-        function makeGraphs() {
         
         var averagePriceChart = dc.barChart("#average-house-price-bar-chart");                        
         averagePriceChart
             .width(600)
             .height(400)
-            .margins({top: 30, right: 50, bottom: 30, left: 50})
+            .margins({top: 0, right: 50, bottom: 60, left: 70})
             .dimension(cityName)
             .group(averageHousePricePerCity)
             .valueAccessor(function (d) {
@@ -126,14 +120,14 @@ var salesByYear = [
             .xAxisLabel("City Name")
             .yAxisLabel("Average Price (£)")
             .elasticY(true)
-            .yAxis().ticks(4);
+            .yAxis().ticks(4)
             
         //House price per type bar chart
         var houseTypePriceBarChart = dc.barChart("#house-type-price-bar-chart");
         houseTypePriceBarChart
             .width(300)
             .height(400)
-            .margins({top: 10, right: 50, bottom: 30, left: 50})
+            .margins({top: 0, right: 50, bottom: 60, left: 70})
             .dimension(houseType)
             .group(averageHousePricePerType)
             .valueAccessor(function (d) {
@@ -152,7 +146,7 @@ var salesByYear = [
         salesNumberChart
             .width(600)
             .height(400)
-            .margins({top: 10, right: 50, bottom: 30, left: 50})
+            .margins({top: 0, right: 50, bottom: 60, left: 70})
             .dimension(cityName)
             .group(totalHouseSalesPerCity)
             .transitionDuration(500)
@@ -178,7 +172,7 @@ var salesByYear = [
         houseSalesLineChart
             .width(500)
             .height(300)
-            .margins({top: 30, right: 50, bottom: 30, left: 50})
+            .margins({top: 0, right: 50, bottom: 60, left: 70})
             .dimension(yearDate)
             .group(salesPerYear)
             .transitionDuration(500)
@@ -192,7 +186,7 @@ var salesByYear = [
         housePriceLineChart
             .width(500)
             .height(300)
-            .margins({top: 30, right: 50, bottom: 30, left: 50})
+            .margins({top: 0, right: 50, bottom: 60, left: 70})
             .dimension(yearDate)
             .group(januaryPrice)
             .transitionDuration(500)
@@ -200,6 +194,5 @@ var salesByYear = [
             .xAxisLabel("Year")
             .yAxisLabel("Price in January (£)")
             .yAxis().ticks(4);
-    }
                                                             
     dc.renderAll();

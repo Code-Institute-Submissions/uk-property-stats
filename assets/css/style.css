@@ -222,6 +222,7 @@
 
 .chart-intro {
     width: 100%;
+    margin: 20px 0;
 }
 
 .price-charts,
@@ -245,6 +246,12 @@
     margin: 20px 0;
     max-width: 850px;
     overflow-x: scroll;
+}
+
+#house-sales-bar-chart .x.axis text,
+#average-house-price-bar-chart .x.axis text,
+#house-type-price-bar-chart .x.axis text {
+    transform: rotate(-45deg);
 }
 
 /*Footer areas*/
@@ -388,6 +395,7 @@
         margin: 5px 0;
         display: flex;
         justify-content: center;
+        overflow-x: hidden;
     }
         
     .footer-top {
