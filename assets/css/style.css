@@ -248,6 +248,8 @@
     overflow-x: scroll;
 }
 
+/*Targeting the individual text elements along the */
+
 #house-sales-bar-chart .x.axis text,
 #average-house-price-bar-chart .x.axis text,
 #house-type-price-bar-chart .x.axis text {
@@ -358,6 +360,7 @@
 }
 
 /*Larger screen sizes*/
+/*Tablet screens*/
 
 @media (min-width: 768px) {
     
@@ -415,6 +418,8 @@
     }
 }
 
+/*Laptop screens*/
+
 @media (min-width: 992px) {
     
     #map {
@@ -438,6 +443,8 @@
     }
     
 }
+
+/*Larger screens*/
 
 @media (min-width: 1224px) {
     
