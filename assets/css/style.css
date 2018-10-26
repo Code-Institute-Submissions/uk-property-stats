@@ -92,6 +92,14 @@
     width: 90%;
 }
 
+.site-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .section-intro {
     width: 100%;
     margin: 20px 0;
@@ -102,7 +110,13 @@
     font-weight: 500;
 }
 
-/*Buttons*/
+#map {
+    width: 100%;
+    height: 500px;
+    margin: 10px 0 20px 0;
+}
+
+/*Buttons for price and sales reveals*/
 
 #price-button {
     background-color: #7D0CE8;
@@ -151,6 +165,8 @@
 
 /*The individual charts*/
 
+/*Different sections to be revealed depending on which button is pressed by the user.*/
+
 #price-section-title {
     display: none;
 }
@@ -186,6 +202,8 @@
     margin: 0;
 }
 
+/*Chart section format*/
+
 .price-charts,
 .sales-charts {
     display: none;
@@ -204,20 +222,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.site-info {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#map {
-    width: 100%;
-    height: 500px;
-    margin: 10px 0 20px 0;
 }
 
 .chart-intro {
@@ -248,12 +252,12 @@
     overflow-x: scroll;
 }
 
-/*Targeting the individual text elements along the */
+/*Targeting the individual text elements in the bar charts */
 
 #house-sales-bar-chart .x.axis text,
 #average-house-price-bar-chart .x.axis text,
 #house-type-price-bar-chart .x.axis text {
-    transform: rotate(-45deg);
+    transform: rotate(-25deg);
 }
 
 /*Footer areas*/
@@ -422,9 +426,15 @@
 
 @media (min-width: 992px) {
     
+    /*Stops map from getting wider on the larger screens*/
+    
     #map {
         max-width: 950px;
     }
+    
+    /*Change widths of charts alowing the linked charts to go side by side on larger screens*/
+    
+    /*City and type price charts*/
     
     #average-house-price-bar-chart {
         width: 65%;
@@ -433,6 +443,8 @@
     #house-type-price-bar-chart {
         width: 35%;
     }
+    
+    /*City and type sales charts*/
     
     #house-sales-bar-chart {
         width: 65%;
@@ -448,6 +460,8 @@
 
 @media (min-width: 1224px) {
     
+    /*Smaller widths to contain content*/
+    
     .opening-text-container,
     .section-intro,
     .sales-charts,
@@ -455,4 +469,5 @@
     .footer-top {
         width: 80%;
     }
+    
 }
