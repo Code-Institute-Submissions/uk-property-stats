@@ -63,6 +63,7 @@
 
 .opening-intro {
     width: 100%;
+    max-width: 1200px;
     margin: 10px 0;
 }
 
@@ -252,6 +253,12 @@
     overflow-x: scroll;
 }
 
+#house-type-price-bar-chart,
+#house-type-pie-chart {
+    display: flex;
+    justify-content: center;
+}
+
 /*Targeting the individual text elements in the bar charts */
 
 #house-sales-bar-chart .x.axis text,
@@ -295,9 +302,6 @@
 
 .footer-top div div p {
     font-weight: 300;
-}
-    
-.contact-section {
 }
 
 .footer-input-text-box {

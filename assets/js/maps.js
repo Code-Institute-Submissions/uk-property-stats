@@ -30,7 +30,8 @@ function initMap() {
     });
     
 //Creation of the markers for each of the cities
-    
+
+// The variable currentWindow was created following a discussion with my mentor. It was created to enable the current open window to close when the next was opened. Before this was created the user would have to manually close the existing open window before opening up a new one.      
     var currentWindow = null;
     
     var newMarker, i
@@ -57,6 +58,7 @@ function initMap() {
             
             google.maps.event.addListener(marker,'click', (function(marker,content,infoWindow){ 
                 return function() {
+                //currentWindow set to close on the close of a new icon. Created with helo from the mentor as mentioned above.
                 if (currentWindow) {
                     currentWindow.close()
                 };
