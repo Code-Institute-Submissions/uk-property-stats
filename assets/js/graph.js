@@ -126,7 +126,7 @@ var salesByYear = [
         var houseTypePriceBarChart = dc.barChart("#house-type-price-bar-chart");
         houseTypePriceBarChart
             .width(300)
-            .height(400)
+            .height(420)
             .margins({top: 0, right: 50, bottom: 60, left: 70})
             .dimension(houseType)
             .group(averageHousePricePerType)
@@ -137,7 +137,7 @@ var salesByYear = [
             .x(d3.scale.ordinal())
             .xUnits(dc.units.ordinal)
             .xAxisLabel("House Type")
-            .yAxisLabel("Price")
+            .yAxisLabel("Price (£)")
             .elasticY(true)
             .yAxis().ticks(4);
         
