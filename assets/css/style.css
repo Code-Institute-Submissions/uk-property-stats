@@ -166,18 +166,10 @@
 
 /*The individual charts*/
 
-/*Different sections to be revealed depending on which button is pressed by the user.*/
-
-#price-section-title,
-#sales-section-title {
-    display: none;
-}
-
-#price-section-title.active,
-#sales-section-title.active {
+.chart-section-intro {
     display: flex;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     height: 55px;
     justify-content: center;
     align-items: center;
@@ -185,17 +177,12 @@
     margin-top: 20px;
 }
 
-#price-section-title.active {
+#price-section-title {
     background-color: #7D0CE8;
 }
 
-#sales-section-title.active {
+#sales-section-title {
     background-color: #FF0000;
-}
-
-#price-section-title h2,
-#sales-section-title h2 {
-    margin: 0;
 }
 
 /*Chart section format*/
