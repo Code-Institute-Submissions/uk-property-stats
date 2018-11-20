@@ -26,6 +26,6 @@ function averagingData(item) {
         function () {
             return { count: 0, total: 0, average: 0 };
         }
-    )
+    );
     return averageHousePriceItem;    
-};
+}

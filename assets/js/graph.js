@@ -73,6 +73,11 @@ var salesByYear = [
     {"Year": "2016", "Price": 205404, "Number of Sales": 1233030},
     {"Year": "2017", "Price": 218225, "Number of Sales": 1223650}
 ];
+
+	var crossfilter;
+	var dc;
+	var averagingData;
+	var d3;
     // variable containing the collection of data
     
     //Data for the bar graphs and the bar charts
@@ -120,7 +125,7 @@ var salesByYear = [
             .xAxisLabel("City Name")
             .yAxisLabel("Average Price (£)")
             .elasticY(true)
-            .yAxis().ticks(4)
+            .yAxis().ticks(4);
             
         //House price per type bar chart
         var houseTypePriceBarChart = dc.barChart("#house-type-price-bar-chart");
