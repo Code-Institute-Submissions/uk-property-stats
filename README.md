@@ -70,7 +70,7 @@ The contact section in the footer was tested by simply typing wrong types of inf
 The site was run through HTML and CSS validation sites, and any errors found were corrected.
 
 ## Deployment
-The project has been deployed to Github. 
+The project has been deployed to Github. The link to the repository is https://github.com/JShad30/uk-property-stats and the link to the web page itself is https://jshad30.github.io/uk-property-stats/
 
 ## Credits
 The figures for the number of house sales and house prices were obtained from Zoopla for both the cityPriceData and citiesData variables. The Google API was used for the creation of the map, and EmailJS for the contact section. 
