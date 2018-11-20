@@ -168,26 +168,12 @@
 
 /*Different sections to be revealed depending on which button is pressed by the user.*/
 
-#price-section-title {
-    display: none;
-}
-
-#price-section-title.active {
-    display: flex;
-    width: 100%;
-    max-width: 1000px;
-    height: 55px;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    margin-top: 20px;
-    background-color: #7D0CE8;
-}
-
+#price-section-title,
 #sales-section-title {
     display: none;
 }
 
+#price-section-title.active,
 #sales-section-title.active {
     display: flex;
     width: 100%;
@@ -197,6 +183,13 @@
     align-items: center;
     color: #ffffff;
     margin-top: 20px;
+}
+
+#price-section-title.active {
+    background-color: #7D0CE8;
+}
+
+#sales-section-title.active {
     background-color: #FF0000;
 }
 
