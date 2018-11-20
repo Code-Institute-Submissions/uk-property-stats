@@ -175,6 +175,7 @@
 #price-section-title.active {
     display: flex;
     width: 100%;
+    max-width: 1000px;
     height: 55px;
     justify-content: center;
     align-items: center;
@@ -190,6 +191,7 @@
 #sales-section-title.active {
     display: flex;
     width: 100%;
+    max-width: 1000px;
     height: 55px;
     justify-content: center;
     align-items: center;
