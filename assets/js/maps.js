@@ -18,6 +18,9 @@ var cities = [
 ];
 
 //initialising the map
+
+var google;
+var setLatLong;
     
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -34,13 +37,13 @@ function initMap() {
 // The variable currentWindow was created following a discussion with my mentor. It was created to enable the current open window to close when the next was opened. Before this was created the user would have to manually close the existing open window before opening up a new one.      
     var currentWindow = null;
     
-    var newMarker, i
+    var newMarker, i;
         for (i = 0; i < cities.length; i++) {
-            var cityName = cities[i][0]
-            var info = cities[i][1]
-            var number = cities[i][2]
-            var latitude = cities[i][3]
-            var longitude = cities[i][4]
+            var cityName = cities[i][0];
+            var info = cities[i][1];
+            var number = cities[i][2];
+            var latitude = cities[i][3];
+            var longitude = cities[i][4];
             
 //Setting the longitude and latitude numbers for each of the variables. These figures are gained from the data above.
             
@@ -54,14 +57,14 @@ function initMap() {
             
             var content = `<h5>${cityName}</h5><p>${info}<p><p>${number}<p>`;
                             
-            var infoWindow = new google.maps.InfoWindow()
+            var infoWindow = new google.maps.InfoWindow();
             
             google.maps.event.addListener(marker,'click', (function(marker,content,infoWindow){ 
                 return function() {
                 //currentWindow set to close on the close of a new icon. Created with helo from the mentor as mentioned above.
                 if (currentWindow) {
-                    currentWindow.close()
-                };
+                    currentWindow.close();
+                }
                 infoWindow.setContent(content);
                 infoWindow.open(map, marker);
                 currentWindow = infoWindow;
