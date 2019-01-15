@@ -65,12 +65,16 @@ The website has been tested in different browsers and for different screen width
 
 I also had people use the site to check its user friendliness. I found that there was some confusion at first about the links between the different bars and pie charts. I created a scrolling selector so the user could choose cities or house types for the different charts, but found this created other issues and confusion, as there was still the functionality to be able to click on the individual bars on the charts.
 
-The contact section in the footer was tested by simply typing wrong types of information or leaving blank the different input boxes.
+The contact section in the footer was tested by simply typing wrong types of information or leaving blank the different input boxes. I was finding that sometimes when I was inserting data into the form, the information would not be sent to the email address linked.
 
 The site was run through HTML and CSS validation sites, and any errors found were corrected.
 
 ## Deployment
-The project has been deployed to Github. The link to the repository is https://github.com/JShad30/uk-property-stats and the link to the web page itself is https://jshad30.github.io/uk-property-stats/
+The project has been deployed to Github using the 'git push' command from the terminal. At first I had an issue when pushing the site to git hub, as the code had moved off of the 'master' branch. 
+
+The link to the repository can be found by clicking https://github.com/JShad30/uk-property-stats.
+
+The link to the web page itself is https://jshad30.github.io/uk-property-stats/.
 
 ## Credits
 The figures for the number of house sales and house prices were obtained from Zoopla for both the cityPriceData and citiesData variables. The Google API was used for the creation of the map, and EmailJS for the contact section. 
