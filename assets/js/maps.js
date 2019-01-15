@@ -32,9 +32,9 @@ function initMap() {
         mapTypeId: google.maps.MapTypeId.SATELLITE
     });
     
-//Creation of the markers for each of the cities
+    //Creation of the markers for each of the cities
 
-// The variable currentWindow was created following a discussion with my mentor. It was created to enable the current open window to close when the next was opened. Before this was created the user would have to manually close the existing open window before opening up a new one.      
+    // The variable currentWindow was created following a discussion with my mentor. It was created to enable the current open window to close when the next was opened. Before this was created the user would have to manually close the existing open window before opening up a new one.      
     var currentWindow = null;
     
     var newMarker, i;
@@ -45,16 +45,14 @@ function initMap() {
             var latitude = cities[i][3];
             var longitude = cities[i][4];
             
-//Setting the longitude and latitude numbers for each of the variables. These figures are gained from the data above.
-            
+            //Setting the longitude and latitude numbers for each of the variables. These figures are gained from the data above.
             setLatLong = new google.maps.LatLng(latitude, longitude);
             
             var marker = new google.maps.Marker({
                 map: map, title: cityName, position: setLatLong 
             });
             
-//Content of box
-            
+            //Content of box
             var content = `<h5>${cityName}</h5><p>${info}<p><p>${number}<p>`;
                             
             var infoWindow = new google.maps.InfoWindow();
@@ -73,3 +71,5 @@ function initMap() {
         })(marker,content,infoWindow));  
     }
 }
+
+initMap();

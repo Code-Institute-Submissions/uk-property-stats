@@ -61,7 +61,7 @@ The charts were created using D3 and DC. They have been created using these libr
 The contact section is at the bottom of the page as part of the footer, and has been linked to the emailjs API. The different input bars have been set up to receive the correct types of information expected for what is being asked. 
 
 ## Testing
-The website has been tested in different browsers and for different screen widths. This was to check the functionality of the site for different environments.  The developer tools and console were used in the development and testing phase. It was tested for mobile responsiveness (for the general layout), and to check readability.
+The website has been tested in different browsers and for different screen widths. This was to check the functionality of the site for different environments. The developer tools and console were used in the development and testing phase. It was tested for mobile responsiveness (for the general layout), and to check readability.
 
 I also had people use the site to check its user friendliness. I found that there was some confusion at first about the links between the different bars and pie charts. I created a scrolling selector so the user could choose cities or house types for the different charts, but found this created other issues and confusion, as there was still the functionality to be able to click on the individual bars on the charts.
 

@@ -91,7 +91,6 @@ var salesByYear = [
     var houseType = dataCollection.dimension(dc.pluck("House Type"));
     var totalHouseSalesPerCity = cityName.group().reduceSum(dc.pluck("Number of Sales"));
     var totalHouseSalesPerType = houseType.group().reduceSum(dc.pluck("Number of Sales"));
-    var houseTypePrice = dataCollection.dimension(dc.pluck("Price"));
                             
     //variable and function for finding the average house prices per city.
         

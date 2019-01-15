@@ -1,3 +1,4 @@
+// Javascript function 
 var emailjs;
 
 function sendMail(contactForm) {
@@ -13,4 +14,6 @@ function sendMail(contactForm) {
         function(error) {
             console.log("FAILED", error);
         });
-}
+    }
+    
+sendMail();

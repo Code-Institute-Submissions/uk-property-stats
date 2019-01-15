@@ -18,7 +18,6 @@
 /*Main Content*/
 
 /*Opening header and paragraph*/
-
 .main-content-container,
 .main-content-charts {
     width: 100%;
@@ -39,6 +38,7 @@
     width: 100%;
 }
 
+/*Main hero image on the page, with shading to allow the text to display*/
 .opening-image {
     background-image: url("../images/main-image.jpg");
     background-size: cover;
@@ -57,6 +57,7 @@
     align-items: center;
 }
 
+/*Text within the main image*/
 .opening-text-container {
     width: 90%;
 }
@@ -74,14 +75,6 @@
 /*Main content and statistics on site*/
 
 /*Heading and intro text to the different charts*/
-
-.chart-toggle-buttons {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 .main-content-charts {
     display: flex;
@@ -111,6 +104,8 @@
     font-weight: 500;
 }
 
+/*Google maps API*/
+
 #map {
     width: 100%;
     height: 500px;
@@ -118,6 +113,14 @@
 }
 
 /*Buttons for price and sales reveals*/
+
+.chart-toggle-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 #price-button {
     background-color: #7D0CE8;
@@ -223,6 +226,7 @@
     flex-flow: wrap;
 }
 
+/*Individual charts*/
 #house-sales-bar-chart,
 #house-type-pie-chart,
 #average-house-price-bar-chart,
