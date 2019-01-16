@@ -71,5 +71,3 @@ function initMap() {
         })(marker,content,infoWindow));  
     }
 }
-
-initMap();
