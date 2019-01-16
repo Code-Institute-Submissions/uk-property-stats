@@ -1,8 +1,8 @@
 # UK Property Stats - Interactive Front End Milestone Project
 
-The UK Property Stats site has been created for those who want to easily compare the amount of sales, and the prices of properties in different cities and towns in different parts of the UK. There is a map providing a quick overview of the data. Underneath there are charts which the allow the user to see the differences between the cities. The users can interact with the chart.
+The UK Property Stats site has been created for those who want to easily compare the amount of sales, and the prices of properties in different cities and towns across all parts of the UK. There is a map providing a quick overview of the data. Underneath there are charts which the allow the user to see the differences between the cities. The user can interact with the chart.
 
-The sites purpose is to display facts and figures about the UK Property market in an easy to read, graphical form.
+The site purpose is to display facts and figures about the UK Property market in an easy to read, graphical form.
 
 ## User Experience
 The Google Maps API was used to enable the user to click on the markers and get an instant overview of the house sales and prices for a particular city. Under the map there are two buttons ("House Sales" and "House Prices"). The user can click either of these to get the relevant information regarding each topic.
@@ -43,7 +43,7 @@ With a DC line chart there is an option to present the information in a table fo
 For the information in the graphs, I have produced my own collection of data from online sources. There could be property APIs that would enable me to get access to more data. 
 
 ## Technology Used
-The overall layout of this site was created in HTML and CSS, and uses responsive design with a mobile first approach. This project uses two APIs (Google Maps and EmailJS), and has a number of Javascript files for different sections of the page. Bootstrap was used for the navigation bar and the font-family. The site is responsive to different media types and browsers, and is created with mobile first design. The responsive sections have been built using Javascript and jQuery. 
+The overall layout of this site was created in HTML and CSS, and uses responsive design with a mobile first approach. This project uses two APIs (Google Maps and EmailJS), and has a number of Javascript files for different sections of the page. Bootstrap was used for the navigation bar and the font-family. The buttons have been built using jQuery, and the charts have been built with javascript using D3 and DC. 
 
 ### Navigation Bar
 This website is a single page application so rather than move from page to page the different list items within the navigation bar scroll down to a particular section of the page.
@@ -52,10 +52,10 @@ This website is a single page application so rather than move from page to page 
 The map was created using the Google Maps API. A number of markers were added for the different cities and in the maps.js file a dataset with a variable name "cities" was built so that the markers on the map could be created. Each marker was created in the variable named "newMarker" using the for loop which iterated through the data in each of the arrays contained within "cities".
 
 ### Buttons
-The file graphButton.js contains jQuery code that reponds to the users actions by presenting the information they have asked to view ("House Sales", or "House Prices"). House Price or House Sales information and graphs are displayed depending on which button is clicked. 
+The file graphButton.js contains jQuery code that reponds to the user's actions by presenting the information they have asked to view ("House Sales", or "House Prices"). House Price or House Sales information and graphs are displayed depending on which button is clicked. 
 
 ### Charts
-The charts were created using D3 and DC. They have been created using these libraries. When in mobile views, the bar charts that overflow on the page have been set to scroll horizontally. The data for the charts have been stored in variables within the files where they are used. The averaging function has been created in its own file for neatness.
+The charts were created using D3 and DC. When in mobile views, the bar charts that overflow on the page have been set to scroll horizontally. The data for the charts have been stored in variables within the files where they are used. The averaging function has been created in its own file for neatness.
 
 ### Contact Section
 The contact section is at the bottom of the page as part of the footer, and has been linked to the emailjs API. The different input bars have been set up to receive the correct types of information expected for what is being asked. 
