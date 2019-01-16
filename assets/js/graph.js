@@ -198,5 +198,7 @@ var salesByYear = [
             .xAxisLabel("Year")
             .yAxisLabel("Price in January (£)")
             .yAxis().ticks(4);
+            
+    document.addEventListener('touchmove', this._preventDefault, { passive: false });
                                                             
     dc.renderAll();
