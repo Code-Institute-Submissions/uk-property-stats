@@ -198,8 +198,5 @@ var salesByYear = [
             .xAxisLabel("Year")
             .yAxisLabel("Price in January (£)")
             .yAxis().ticks(4);
-    
-    //This was added to remove the console errors. Advice was received from Github.        
-    document.addEventListener('touchmove', this._preventDefault, { passive: false });
                                                             
     dc.renderAll();
