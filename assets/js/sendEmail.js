@@ -1,5 +1,4 @@
 // Javascript function 
-var emailjs;
 
 function sendMail(contactForm) {
     emailjs.send("gmail", "interactive_front_end", {
@@ -14,4 +13,6 @@ function sendMail(contactForm) {
         function(error) {
             console.log("FAILED", error);
         });
-    }
+    //Before this was applied the form was tempremental, with the emails being sent only some of the time. After looking at this with the tutor the error was fixed.
+    return false;
+}
